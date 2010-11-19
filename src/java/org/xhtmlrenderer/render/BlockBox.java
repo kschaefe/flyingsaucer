@@ -42,6 +42,7 @@ import org.xhtmlrenderer.layout.BlockBoxing;
 import org.xhtmlrenderer.layout.BlockFormattingContext;
 import org.xhtmlrenderer.layout.BoxBuilder;
 import org.xhtmlrenderer.layout.BreakAtLineContext;
+import org.xhtmlrenderer.layout.ContentOrganizer;
 import org.xhtmlrenderer.layout.CounterFunction;
 import org.xhtmlrenderer.layout.FloatManager;
 import org.xhtmlrenderer.layout.InlineBoxing;
@@ -939,7 +940,7 @@ public class BlockBox extends Box implements InlinePaintable {
 
     protected void layoutInlineChildren(
             LayoutContext c, int contentStart, int breakAtLine, boolean tryAgain) {
-        InlineBoxing.layoutContent(c, this, contentStart, breakAtLine);
+        ContentOrganizer.getIntance().layoutContent(c, this, contentStart, breakAtLine);
 
         if (c.isPrint() && c.isPageBreaksAllowed() && getChildCount() > 1) {
             satisfyWidowsAndOrphans(c, contentStart, tryAgain);
