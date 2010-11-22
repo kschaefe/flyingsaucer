@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.xhtmlrenderer</groupId>
+  <artifactId>flyingsaucer</artifactId>
+  <version>0.8.99-SNAPSHOT</version>
+  <name>Flying Saucer</name>
+  <description>A renderer for displaying X(HT)ML documents.</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+  	<sourceDirectory>src/java</sourceDirectory>
+  	<resources>
+  		<resource>
+  			<directory>src/conf</directory>
+  		</resource>
+  		<resource>
+  			<directory>src/css</directory>
+  		</resource>
+  	</resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <source>1.4</source>
+          <target>1.4</target>
+         <excludes>
+            <exclude>eeze/</exclude>
+            <exclude>utilities/</exclude>
+         </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.4.2</version>
+        <configuration>
+            <outputDirectory>${project.build.outputDirectory}/resources</outputDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.lowagie</groupId>
+  		<artifactId>itext</artifactId>
+  		<version>2.1.7</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+        <!-- Use the following command to add the swt to the local repository:
+              mvn install:install-file   
+                -Dfile=path-to-swt-jar
+                -DgroupId=org.eclipse  
+                -DartifactId=swt  
+                -Dversion=3.6  
+                -Dpackaging=jar  
+                -DgeneratePom=true 
+        -->
+  		<groupId>org.eclipse</groupId>
+  		<artifactId>swt</artifactId>
+  		<version>3.6</version>
+  		<type>jar</type>
+  		<scope>provided</scope>
+  		<optional>true</optional>
+  	</dependency>
+  </dependencies>
+</project>
