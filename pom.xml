@@ -12,10 +12,13 @@
   	<sourceDirectory>src/java</sourceDirectory>
   	<resources>
   		<resource>
-  			<directory>src/conf</directory>
-  		</resource>
-  		<resource>
-  			<directory>src/css</directory>
+  			<directory>src</directory>
+            <includes>
+                <include>conf/**</include>
+                <include>css/**</include>
+                <include>schema/docbook/**</include>
+                <include>schema/xhtml/**</include>
+            </includes>
   		</resource>
   	</resources>
     <plugins>
