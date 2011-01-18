@@ -53,22 +53,65 @@
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
-  	<dependency>
-        <!-- Use the following command to add the swt to the local repository:
-              mvn install:install-file   
-                -Dfile=path-to-swt-jar
-                -DgroupId=org.eclipse  
-                -DartifactId=swt  
-                -Dversion=3.6  
-                -Dpackaging=jar  
-                -DgeneratePom=true 
-        -->
-  		<groupId>org.eclipse</groupId>
-  		<artifactId>swt</artifactId>
-  		<version>3.6</version>
-  		<type>jar</type>
-  		<scope>provided</scope>
-  		<optional>true</optional>
-  	</dependency>
   </dependencies>
+  <profiles>
+    <profile>
+      <id>windows</id>
+      <activation>
+        <os>
+          <family>Windows</family>
+        </os>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.eclipse</groupId>
+          <artifactId>swt</artifactId>
+          <version>3.6</version>
+          <type>jar</type>
+          <scope>system</scope>
+          <systemPath>${basedir}/lib/swt/swt-3.6-win32.jar</systemPath>
+          <optional>true</optional>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>mac</id>
+      <activation>
+        <os>
+          <!-- TODO handle 32 bit and 64 bit procs differently -->
+          <family>Mac</family>
+        </os>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.eclipse</groupId>
+          <artifactId>swt</artifactId>
+          <version>3.6</version>
+          <type>jar</type>
+          <scope>system</scope>
+          <systemPath>${basedir}/lib/swt/swt-3.6-osx.jar</systemPath>
+          <optional>true</optional>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>linux</id>
+      <activation>
+        <os>
+          <name>Linux</name>
+        </os>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.eclipse</groupId>
+          <artifactId>swt</artifactId>
+          <version>3.6</version>
+          <type>jar</type>
+          <scope>system</scope>
+          <systemPath>${basedir}/lib/swt/swt-3.6-linux.jar</systemPath>
+          <optional>true</optional>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 </project>
